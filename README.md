@@ -5,6 +5,7 @@ A guide on setting up a DCDarknet NPC
 # Setup Steps
 
 ### Install Raspbian
+Installation instructions can be found on the Rasbpian site [here](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
 
 ### Confirm everything is up to date
 sudo apt-get update && apt-get upgrade
