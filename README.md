@@ -57,3 +57,6 @@ Add the follow lines:
     static ip_address=192.168.4.1
     denyinterfaces eth0
     denyinterfaces wlan0
+
+### Spoof the MAC address - WIP
+The DCDN badge looks for a specific MAC address start with dc:d0 so we need to lie a little bit. Use the macchanger tool for linux to set the MAC address to dc:d0:22:33:44:55. Adding more to this once clearer.
