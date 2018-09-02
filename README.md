@@ -2,13 +2,13 @@
 A guide on setting up a DCDarknet NPC
 
 # Hardware Requirements
-Raspberry Pi
-A computer
-SD card (class 10 recommended)
-Keyboard
-Mouse
-Display
-External wifi dongle. Adafruit sells one [here](https://www.adafruit.com/product/1030). More on this later.
+* Raspberry Pi
+* A computer
+* SD card (class 10 recommended)
+* Keyboard
+* Mouse
+* Display
+* External wifi dongle. Adafruit sells one [here](https://www.adafruit.com/product/1030). More on this later.
 
 # Software Setup
 
