@@ -34,3 +34,15 @@ If you're using a Pi3 or similar board that has wifi built in, you'll want to di
 
 More about overlays [here](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README)
 
+### Configure the Pi to be an access point
+Thanks to Steven Lovely and his article [here](https://thepi.io/how-to-use-your-raspberry-pi-as-a-wireless-access-point/). This section mostly mimics his post but has a few tweaks specific to our NPC setup.
+
+Install the necessary tools hostapd and dnsmasq.
+
+    sudo apt-get install hostapd
+    sudo apt-get install dnsmasq
+
+We need to make some edits to configuration files for these two packages so we should shut them down.
+
+    sudo systemctl stop hostapd
+    sudo systemctl stop dnsmasq
