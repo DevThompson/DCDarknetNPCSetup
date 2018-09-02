@@ -46,3 +46,14 @@ We need to make some edits to configuration files for these two packages so we s
 
     sudo systemctl stop hostapd
     sudo systemctl stop dnsmasq
+
+The badge looks for a specific IP so we need to set a static one for the NPC. Edit the dhcpcd.conf file with:
+
+    sudo nano /etc/dhcpcd.conf
+
+Add the follow lines:
+
+    interface wlan0
+    static ip_address=192.168.4.1
+    denyinterfaces eth0
+    denyinterfaces wlan0
