@@ -19,5 +19,5 @@ Edit /boot/config.txt and add
     # Disable on-board bluetooth
     dtoverlay=pi3-disable-bt
 
-For more on boot overlays go to https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README 
+More about overlays [here](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README)
 
