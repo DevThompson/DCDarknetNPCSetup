@@ -17,6 +17,11 @@ Installation instructions can be found on the Rasbpian site [here](https://www.r
 
 ### Confirm everything is up to date
     sudo apt-get update && apt-get upgrade
+    
+### Download the DCDarknet source files and install the related dependencies
+    git clone --recurse-submodules https://github.com/thedarknet/nodes.git
+    cd nodes
+    pip install -r requirements.txt
 
 ### Disable built-in wifi and bluetooth
 If you're using a Pi3 or similar board that has wifi built in, you'll want to disable it to force the external wifi chip to become wlan0. Edit /boot/config.txt and add
