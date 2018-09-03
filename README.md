@@ -132,6 +132,41 @@ Set the rule to load on boot by opening rc.local:
 Locate the line with "exit 0" and add the following just above it:
 
     iptables-restore < /etc/iptables.ipv4.nat
+    
+### Forward internet traffic
+Devices can connect to our access point but they won't have internet. We need to setup a bridge to allow this. Start by installing the necessary tool brctl:
+
+    sudo apt-get install bridge-utils
+    
+Add a new bridge:
+
+    sudo brctl addbr br0
+
+If you get a message stating that br0 already exists, you will need to delete the bridge and recreate it:
+
+    sudo ifconfig br0 down
+    sudo brctl delbr br0
+    sudo brctl addbr br0
+    
+Connect the bridge to the ethernet:
+
+    sudo brctl addif br0 eth0
+    
+Edit the interfaces file:
+
+    sudo nano /etc/network/interfaces
+    
+Add the following the bottom of the page:
+
+    auto br0
+    iface br0 inet manual
+    bridge_ports eth0 wlan0
+    
+Reboot:
+
+    sudo shutdown -r now
+    
+Once the pi comes back up, you should have a wireless network called 'dark' with the password 'darknetnpc'. Connect using your phone or laptop and verify that you are able to reach the internet. If not, walk through the steps again to make sure nothing was missed.
 
 ### Spoof the MAC address - WIP
 The DCDN badge looks for a specific MAC address start with dc:d0 so we need to lie a little bit. Use the macchanger tool for linux to set the MAC address to dc:d0:22:33:44:55. Adding more to this once clearer.
