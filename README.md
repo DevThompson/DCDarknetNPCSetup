@@ -26,13 +26,6 @@ Installation instructions can be found on the Rasbpian site [here](https://www.r
 
 &nbsp;
 
-### Download the DCDarknet source files and install the related dependencies
-    git clone --recurse-submodules https://github.com/thedarknet/nodes.git
-    cd nodes
-    pip install -r requirements.txt
-
-&nbsp;
-
 ### Disable built-in wifi and bluetooth
 If you're using a Pi3 or similar board that has wifi built in, you'll want to disable it to force the external wifi chip to become wlan0. Edit /boot/config.txt and add
 
@@ -99,19 +92,14 @@ Open the config file:
 Add the following info:
 
     interface=wlan0
-    bridge=br0
     hw_mode=g
-    channel=7
+    channel=6
     wmm_enabled=0
     macaddr_acl=0
     auth_algs=1
     ignore_broadcast_ssid=0
-    wpa=2
-    wpa_key_mgmt=WPA-PSK
-    wpa_pairwise=TKIP
-    rsn_pairwise=CCMP
+    wpa=0
     ssid=dark
-    wpa_passphrase=darknetnpc
 
 &nbsp;
 
@@ -197,10 +185,64 @@ Once the pi comes back up, you should have a wireless network called 'dark' with
 &nbsp;
 
 ### Spoof the MAC address
-The DCDN badge looks for a specific MAC address start with dc:d0 so we need to lie a little bit. Use the macchanger tool for linux to set the MAC address to dc:d0:22:33:44:55:
+The DCDN badge looks for a specific MAC address start with dc:d0 so we need to lie a little bit.
+
+Shutdown the wifi:
+
+    sudo ifconfig wlan0 down
+
+Use macchanger to set the mac address on the wifi chip.
 
     sudo macchanger --mac=dc:d0:22:33:44:55 wlan0
     
+Note the output of this command. You should see an original MAC and a new MAC. Copy the original MAC address as we will need it on the next step.
+    
 &nbsp;
 
-This page is a work in progress. It is subject to change and may not be complete.
+### Set the MAC address to spoof on boot
+Using macchanger only spoofs the mac address until the next boot. Open up 00-default.link:
+
+    sudo nano /etc/systemd/network/00-default.link
+    
+Add the following and replace ORIGINALMAC with the original MAC address that you obtained from the previous step:
+
+    [Match]
+    MACAddress=ORIGINALMAC
+    
+    [Link]
+    MACAddress=dc:d0:22:33:44:55
+    
+&nbsp;
+
+# Configure the NPC code
+
+&nbsp;
+
+### Download the DCDarknet source files and install the related dependencies
+    git clone --recurse-submodules https://github.com/thedarknet/nodes.git
+    cd nodes
+    pip install -r requirements.txt
+
+&nbsp;
+
+### Configure the Flask app location
+When the badge connects to the NPC, it looks for a Flask app running at 192.168.4.1:8080. Make sure you are in the folder that you downloaded the DCDN repo which is most likely ~/nodes/npc. If you chose to download the repo elsewhere, navigate to that folder:
+
+    cd ~/nodes/npc
+    
+ Open darknet.py to edit:
+ 
+     sudo nano darknetnpc.py
+     
+The very last line of the file should look similar to the following:
+
+    app.run(host="0.0.0.0", port=int("8080"), debug=True)
+    
+Edit this line to include the static IP that we set earlier:
+
+    app.run(host="192.168.4.1", port=int("8080"), debug=True)
+
+&nbsp;
+
+# Infect your badge
+At this point, the NPC should be setup and ready to spread infections. Program the wifi settings into the badge and then scan for for NPCs. If you run into any issues, revisit the steps above. Feel free to hit me up on [Twitter](https://twitter.com/r00_______).
