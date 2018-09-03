@@ -1,6 +1,8 @@
 # DCDarknetNPCSetup
 A guide on setting up a DCDarknet NPC
 
+&nbsp;
+
 # Hardware Requirements
 * Raspberry Pi
 * A computer
@@ -16,6 +18,8 @@ A guide on setting up a DCDarknet NPC
 
 ### Install Raspbian
 Installation instructions can be found on the Rasbpian site [here](https://www.raspberrypi.org/documentation/installation/installing-images/README.md).
+
+&nbsp;
 
 ### Confirm everything is up to date
     sudo apt-get update && apt-get upgrade
@@ -84,7 +88,9 @@ And add the following:
 
     interface=wlan0
         dhcp-range=192.168.4.2,192.168.4.99,255.255.255.0,24h
-        
+
+&nbsp;
+
 ### Setup the ap software
 Open the config file:
 
@@ -107,6 +113,8 @@ Add the following info:
     ssid=dark
     wpa_passphrase=darknetnpc
 
+&nbsp;
+
 ### Point the system to the location of the config file
 
     sudo nano /etc/default/hostapd
@@ -114,7 +122,9 @@ Add the following info:
 Locate the line that begins with #DAEMON_CONF=”” and delete the # at the beginning of the line. The line should now appear like this:
 
     DAEMON_CONF="/etc/hostapd/hostapd.conf"
-    
+
+&nbsp;
+
 ### Setup traffic forwarding
 When a device connects to our access point we want it to be able to reach the internet. We direct the device to the ethernet port after it connects to our wireless network. Open the config file:
 
@@ -127,7 +137,9 @@ Find this line:
 Delete the # so that the line looks like this:
 
     net.ipv4.ip_forward=1
-    
+
+&nbsp;
+
 ### Setup iptables
 Configure IP masquerading for outbound traffic on eth0:
 
@@ -144,7 +156,9 @@ Set the rule to load on boot by opening rc.local:
 Locate the line with "exit 0" and add the following just above it:
 
     iptables-restore < /etc/iptables.ipv4.nat
-    
+
+&nbsp;
+
 ### Forward internet traffic
 Devices can connect to our access point but they won't have internet. We need to setup a bridge to allow this. Start by installing the necessary tool brctl:
 
@@ -179,6 +193,8 @@ Reboot:
     sudo shutdown -r now
     
 Once the pi comes back up, you should have a wireless network called 'dark' with the password 'darknetnpc'. Connect using your phone or laptop and verify that you are able to reach the internet. If not, walk through the steps again to make sure nothing was missed.
+
+&nbsp;
 
 ### Spoof the MAC address - WIP
 The DCDN badge looks for a specific MAC address start with dc:d0 so we need to lie a little bit. Use the macchanger tool for linux to set the MAC address to dc:d0:22:33:44:55. Adding more to this once clearer.
