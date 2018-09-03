@@ -1,12 +1,12 @@
 # DCDarknetNPCSetup
-A guide on setting up a DCDarknet NPC
+A guide on setting up a DCDarknet NPC in order to infect your DCDarknet badge.
 
 &nbsp;
 
 # Hardware Requirements
-* Raspberry Pi
+* [Raspberry Pi](https://www.amazon.com/Raspberry-Pi-RASPBERRYPI3-MODB-1GB-Model-Motherboard/dp/B01CD5VC92/ref=sr_1_3?s=pc&ie=UTF8&qid=1536017481&sr=1-3&keywords=raspberry+pi+3)
 * A computer
-* SD card (class 10 recommended)
+* [Micro SD card](https://www.amazon.com/Sandisk-Ultra-Micro-UHS-I-Adapter/dp/B073JYVKNX/ref=sr_1_4?s=pc&ie=UTF8&qid=1536017509&sr=1-4&keywords=micro+sd+card)
 * Keyboard
 * Mouse
 * Display
