@@ -95,5 +95,27 @@ Add the following info:
     ssid=dark
     wpa_passphrase=darknetnpc
 
+### Point the system to the location of the config file
+
+    sudo nano /etc/default/hostapd
+
+Locate the line that begins with #DAEMON_CONF=”” and delete the # at the beginning of the line. The line should now appear like this:
+
+    DAEMON_CONF="/etc/hostapd/hostapd.conf"
+    
+### Setup traffic forwarding
+When a device connects to our access point we want it to be able to reach the internet. We direct the device to the ethernet port after it connects to our wireless network. Open the config file:
+
+    sudo nano /etc/sysctl.conf
+
+Find this line:
+
+    #net.ipv4.ip_forward=1
+    
+Delete the # so that the line looks like this:
+
+    net.ipv4.ip_forward=1
+    
+
 ### Spoof the MAC address - WIP
 The DCDN badge looks for a specific MAC address start with dc:d0 so we need to lie a little bit. Use the macchanger tool for linux to set the MAC address to dc:d0:22:33:44:55. Adding more to this once clearer.
