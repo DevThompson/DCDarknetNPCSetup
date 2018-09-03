@@ -10,7 +10,7 @@ A guide on setting up a DCDarknet NPC
 * Keyboard
 * Mouse
 * Display
-* External wifi dongle that supports monitor mode or at least MAC spoofing. I used Alfa cards and performed without issue.
+* External wifi dongle that supports MAC spoofing such as the [Alfa AWUS036NHA](https://www.amazon.com/Alfa-AWUS036NHA-Wireless-USB-Adaptor/dp/B004Y6MIXS/ref=sr_1_8?ie=UTF8&qid=1536017308&sr=8-8&keywords=alfa). 
 
 &nbsp;
 
