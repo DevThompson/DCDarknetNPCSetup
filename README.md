@@ -8,7 +8,9 @@ A guide on setting up a DCDarknet NPC
 * Keyboard
 * Mouse
 * Display
-* External wifi dongle. Adafruit sells one [here](https://www.adafruit.com/product/1030). More on this later.
+* External wifi dongle that supports monitor mode or at least MAC spoofing. I used Alfa cards and performed without issue.
+
+&nbsp;
 
 # Software Setup
 
@@ -17,11 +19,15 @@ Installation instructions can be found on the Rasbpian site [here](https://www.r
 
 ### Confirm everything is up to date
     sudo apt-get update && apt-get upgrade
-    
+
+&nbsp;
+
 ### Download the DCDarknet source files and install the related dependencies
     git clone --recurse-submodules https://github.com/thedarknet/nodes.git
     cd nodes
     pip install -r requirements.txt
+
+&nbsp;
 
 ### Disable built-in wifi and bluetooth
 If you're using a Pi3 or similar board that has wifi built in, you'll want to disable it to force the external wifi chip to become wlan0. Edit /boot/config.txt and add
@@ -33,6 +39,8 @@ If you're using a Pi3 or similar board that has wifi built in, you'll want to di
     dtoverlay=pi3-disable-bt
 
 More about overlays [here](https://github.com/raspberrypi/firmware/blob/master/boot/overlays/README)
+
+&nbsp;
 
 # Configure the Pi to be an access point
 Thanks to Steven Lovely and his article [here](https://thepi.io/how-to-use-your-raspberry-pi-as-a-wireless-access-point/). This section mostly mimics his post but has a few tweaks specific to our NPC setup.
@@ -47,6 +55,8 @@ We need to make some edits to configuration files for these two packages so we s
     sudo systemctl stop hostapd
     sudo systemctl stop dnsmasq
 
+&nbsp;
+
 ### Set a static IP
 The badge looks for a specific IP so we need to set a static one for the NPC. Edit the dhcpcd.conf file with:
 
@@ -58,7 +68,9 @@ Add the follow lines:
     static ip_address=192.168.4.1
     denyinterfaces eth0
     denyinterfaces wlan0
-    
+
+&nbsp;
+
 ### Configure the DHCP server
 We need to make some changes to a config file so to be safe, let's back it up:
 
