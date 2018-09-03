@@ -196,5 +196,11 @@ Once the pi comes back up, you should have a wireless network called 'dark' with
 
 &nbsp;
 
-### Spoof the MAC address - WIP
-The DCDN badge looks for a specific MAC address start with dc:d0 so we need to lie a little bit. Use the macchanger tool for linux to set the MAC address to dc:d0:22:33:44:55. Adding more to this once clearer.
+### Spoof the MAC address
+The DCDN badge looks for a specific MAC address start with dc:d0 so we need to lie a little bit. Use the macchanger tool for linux to set the MAC address to dc:d0:22:33:44:55:
+
+    sudo macchanger --mac=dc:d0:22:33:44:55 wlan0
+    
+&nbsp;
+
+This page is a work in progress. It is subject to change and may not be complete.
