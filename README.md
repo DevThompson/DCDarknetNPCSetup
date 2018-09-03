@@ -116,6 +116,22 @@ Delete the # so that the line looks like this:
 
     net.ipv4.ip_forward=1
     
+### Setup iptables
+Configure IP masquerading for outbound traffic on eth0:
+
+    sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
+Save the iptable rules:
+
+    sudo sh -c "iptables-save > /etc/iptables.ipv4.nat"
+
+Set the rule to load on boot by opening rc.local:
+
+    sudo nano /etc/rc.local
+    
+Locate the line with "exit 0" and add the following just above it:
+
+    iptables-restore < /etc/iptables.ipv4.nat
 
 ### Spoof the MAC address - WIP
 The DCDN badge looks for a specific MAC address start with dc:d0 so we need to lie a little bit. Use the macchanger tool for linux to set the MAC address to dc:d0:22:33:44:55. Adding more to this once clearer.
