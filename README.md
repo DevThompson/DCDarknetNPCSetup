@@ -10,7 +10,7 @@ A guide on setting up a DCDarknet NPC in order to infect your DCDarknet badge.
 * Keyboard
 * Mouse
 * Display
-* External wifi dongle that supports MAC spoofing such as the [Alfa AWUS036NHA](https://www.amazon.com/Alfa-AWUS036NHA-Wireless-USB-Adaptor/dp/B004Y6MIXS/ref=sr_1_8?ie=UTF8&qid=1536017308&sr=8-8&keywords=alfa). 
+* External wifi dongle that supports MAC spoofing such as the [CanaKit](https://www.amazon.com/CanaKit-Raspberry-Wireless-Adapter-Dongle/dp/B00GFAN498/ref=sr_1_1?ie=UTF8&qid=1536018830&sr=8-1&keywords=canakit+wifi&pldnSite=1) or [Alfa AWUS036NHA](https://www.amazon.com/Alfa-AWUS036NHA-Wireless-USB-Adaptor/dp/B004Y6MIXS/ref=sr_1_8?ie=UTF8&qid=1536017308&sr=8-8&keywords=alfa). 
 
 &nbsp;
 
